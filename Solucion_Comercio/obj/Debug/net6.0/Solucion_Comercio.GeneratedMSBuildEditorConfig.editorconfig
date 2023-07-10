@@ -1,0 +1,209 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Solucion_Comercio
+build_property.RootNamespace = Solucion_Comercio
+build_property.ProjectDir = C:\Users\ACER\OneDrive\Documentos\Beto\UACA-II-Cuatri2023\Diseño de Aplicacines Administrativas\Proyecto\Solucion_Comercio\Solucion_Comercio\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\ACER\OneDrive\Documentos\Beto\UACA-II-Cuatri2023\Diseño de Aplicacines Administrativas\Proyecto\Solucion_Comercio\Solucion_Comercio
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/Inicio/IniciarSeccion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5pY2lvXEluaWNpYXJTZWNjaW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbCompras/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJDb21wcmFzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbCompras/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJDb21wcmFzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbCompras/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJDb21wcmFzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbCompras/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJDb21wcmFzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbCompras/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJDb21wcmFzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbEstadoes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJFc3RhZG9lc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbEstadoes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJFc3RhZG9lc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbEstadoes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJFc3RhZG9lc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbEstadoes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJFc3RhZG9lc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbEstadoes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJFc3RhZG9lc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbFacturas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJGYWN0dXJhc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbFacturas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJGYWN0dXJhc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbFacturas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJGYWN0dXJhc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbFacturas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJGYWN0dXJhc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbFacturas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJGYWN0dXJhc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbInventarios/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJJbnZlbnRhcmlvc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbInventarios/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJJbnZlbnRhcmlvc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbInventarios/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJJbnZlbnRhcmlvc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbInventarios/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJJbnZlbnRhcmlvc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbInventarios/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJJbnZlbnRhcmlvc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbPendientes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJQZW5kaWVudGVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbPendientes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJQZW5kaWVudGVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbPendientes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJQZW5kaWVudGVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbPendientes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJQZW5kaWVudGVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbPendientes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJQZW5kaWVudGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbProductoes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJQcm9kdWN0b2VzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbProductoes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJQcm9kdWN0b2VzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbProductoes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJQcm9kdWN0b2VzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbProductoes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJQcm9kdWN0b2VzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbProductoes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJQcm9kdWN0b2VzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbRoles/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJSb2xlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbRoles/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJSb2xlc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbRoles/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJSb2xlc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbRoles/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJSb2xlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbRoles/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJSb2xlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbUsuarios/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJVc3Vhcmlvc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbUsuarios/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJVc3Vhcmlvc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbUsuarios/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJVc3Vhcmlvc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbUsuarios/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJVc3Vhcmlvc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/TbUsuarios/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJVc3Vhcmlvc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ACER/OneDrive/Documentos/Beto/UACA-II-Cuatri2023/Diseño de Aplicacines Administrativas/Proyecto/Solucion_Comercio/Solucion_Comercio/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-k44e8f7bn3

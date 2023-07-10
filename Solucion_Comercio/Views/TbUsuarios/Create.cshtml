@@ -1,0 +1,72 @@
+﻿@model Solucion_Comercio.Models.TbUsuario
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>TbUsuario</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NombreUsuario" class="control-label"></label>
+                <input asp-for="NombreUsuario" class="form-control" />
+                <span asp-validation-for="NombreUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApellidoUsuario" class="control-label"></label>
+                <input asp-for="ApellidoUsuario" class="form-control" />
+                <span asp-validation-for="ApellidoUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApellidoIiusuario" class="control-label"></label>
+                <input asp-for="ApellidoIiusuario" class="form-control" />
+                <span asp-validation-for="ApellidoIiusuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RolUsuario" class="control-label"></label>
+                <select asp-for="RolUsuario" class ="form-control" asp-items="ViewBag.RolUsuario"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstadoUsuario" class="control-label"></label>
+                <select asp-for="EstadoUsuario" class ="form-control" asp-items="ViewBag.EstadoUsuario"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CorreoUsuario" class="control-label"></label>
+                <input asp-for="CorreoUsuario" class="form-control" />
+                <span asp-validation-for="CorreoUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TelefonoUsuario" class="control-label"></label>
+                <input asp-for="TelefonoUsuario" class="form-control" />
+                <span asp-validation-for="TelefonoUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

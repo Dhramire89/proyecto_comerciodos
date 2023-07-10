@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Solucion_Comercio.Models.TbFactura>
+
+@{
+    ViewData["Title"] = "Facturas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Facturas</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Crear Factura</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaFactura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MontoColones)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MontoDolares)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MontoTarjeta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MontoTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreUsuarioNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaFactura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MontoColones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MontoDolares)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MontoTarjeta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MontoTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreUsuarioNavigation.IdUsuario)
+            </td>
+            <td>
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.IdFactura">Editar</a> |
+                    <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.IdFactura">Detalles</a> |
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.IdFactura">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
