@@ -45,7 +45,7 @@ namespace Solucion_Comercio.Controllers
         // GET: TbFacturas/Create
         public IActionResult Create()
         {
-            ViewData["NombreUsuario"] = new SelectList(_context.TbUsuarios, "IdUsuario", "IdUsuario");
+            ViewData["NombreUsuario"] = new SelectList(_context.TbUsuarios, "IdUsuario", "NombreUsuario");
             return View();
         }
 
@@ -56,7 +56,7 @@ namespace Solucion_Comercio.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdFactura,NombreCliente,NombreUsuario,FechaFactura,MontoColones,MontoDolares,MontoTarjeta,MontoTotal")] TbFactura tbFactura)
         {
-            if (ModelState.IsValid == false)
+            if (ModelState.IsValid)
             {
                 _context.Add(tbFactura);
                 await _context.SaveChangesAsync();

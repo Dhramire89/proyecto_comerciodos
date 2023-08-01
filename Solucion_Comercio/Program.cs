@@ -31,16 +31,16 @@ builder.Services.AddScoped<IUsuarioService, UsuarioService>(); // permite el uso
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("PoliticaSalonero", policy =>
-        policy.RequireClaim("rolUsuario", "1"));
+        policy.RequireClaim("rolUsuario", "1", "3"));
 
     options.AddPolicy("PoliticaCajero", policy =>
-        policy.RequireClaim("rolUsuario", "2"));
+        policy.RequireClaim("rolUsuario", "2", "3"));
 
     options.AddPolicy("PoliticaAdiministrador", policy =>
         policy.RequireClaim("rolUsuario", "3")); 
 
     options.AddPolicy("PoliticaCocinero", policy =>
-        policy.RequireClaim("rolUsuario", "1002"));
+        policy.RequireClaim("rolUsuario", "1002", "3"));
 
 
 });

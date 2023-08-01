@@ -70,6 +70,10 @@
             "Optivem.Framework.Infrastructure.FluentValidation": {
               "target": "Package",
               "version": "[1.0.23, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
             }
           },
           "imports": [

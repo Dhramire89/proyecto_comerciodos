@@ -17,6 +17,12 @@
     <link href="~/css/sb-admin-2.css" rel="stylesheet">
     <link href="~/vendor/toastr/toastr.min.css" rel="stylesheet">
     <link href="~/vendor/sweetalert/sweetalert.css" rel="stylesheet">
+
+
+      <!-- Referencias para utilizar JQuery -->
+    <link href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
 </head>
 <body>
     <!-- Page Wrapper -->
@@ -56,8 +62,8 @@
             <!-- Nav Item  Compras  -->
             <li class="nav-item">
                 <a class="nav-link" href="@Url.Action("Index","TBCompras")"</a>
-                <i class="fas fa-fw fa-tags"></i>
-                <span>Compras</span>
+                <i class="fas fa-fw fa-tags fa-beat"></i>
+                <span>Compras</span> 
                 </a>
             </li>
             <!-- Nav Item  Facturas  -->
@@ -173,7 +179,7 @@
     <script src="~/vendor/toastr/toastr.min.js"></script>
     <script src="~/vendor/sweetalert/sweetalert.js"></script>
     <script src="~/vendor/loadingoverlay/loadingoverlay.min.js"></script>
-
+      <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 
