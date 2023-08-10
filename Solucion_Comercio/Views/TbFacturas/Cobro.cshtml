@@ -1,0 +1,76 @@
+﻿@model Solucion_Comercio.Models.TbFactura
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var montoTotal = ViewData["montoTotal"] as decimal?; // Asegúrate de usar el tipo de dato correcto
+}
+
+
+<hr />
+
+
+<!-- Resto del contenido de la vista -->
+
+<div class="card-body">
+    <h1>Cobro</h1>
+    <div class="mb-2 col-sm-3" >
+        <label for="montoRecibido" class="form-label">Monto Recibido</label>
+
+         <input type="text" id="montoRecibido" class="form-control" placeholder="Monto Recibido" value="@montoTotal">
+
+        
+
+        @*<input class="form-control" id="montoRecibido">*@
+
+
+    </div>
+
+    <div class="mb-2 col-sm-3" >
+        <label class="form-label">Tarjeta</label>
+        <input class="form-control" id="tarjeta">
+    </div>
+
+    <div class="mb-2 col-sm-3" >
+        <label class="form-label">Efectivo</label>
+        <input class="form-control" id="efectivo">
+    </div>
+
+    <br />
+
+    <button id="btnCalcularCambio" class="btn btn-primary">Calcular Cambio</button>
+    <div id="resultadoCambio" class="mt-3"></div>
+
+    <button id="realizarpago" class="btn btn-success">Efectuar pago</button>
+    <div id="realizarPago" class="mt-3"></div>
+</div>
+
+
+        <script>
+    $(document).ready(function () {
+       
+
+        $("#btnCalcularCambio").click(function () {
+            // Código para calcular el cambio
+            // ...
+
+            // Actualizar el valor de montoTotal después de calcular el cambio
+            montoTotal = nuevoValor; // Cambiar esto al nuevo valor calculado
+
+            // Actualizar el campo de entrada con el nuevo valor de montoTotal
+            $("#montoRecibido").val(montoTotal);
+        });
+
+        $("#realizarpago").click(function () {
+            // Código para efectuar el pago
+            // ...
+
+            // Actualizar el valor de montoTotal después de efectuar el pago
+            montoTotal = otroNuevoValor; // Cambiar esto al nuevo valor después de efectuar el pago
+
+            // Actualizar el campo de entrada con el nuevo valor de montoTotal
+            $("#montoRecibido").val(montoTotal);
+        });
+    });
+</script>

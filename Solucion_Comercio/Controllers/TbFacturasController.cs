@@ -156,6 +156,18 @@ namespace Solucion_Comercio.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+
+        public IActionResult Cobro(decimal montoTotal)
+        {
+            ViewData["montoTotal"] = montoTotal;
+            return View();
+        }
+
+
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         private bool TbFacturaExists(int id)
         {
