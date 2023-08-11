@@ -152,18 +152,27 @@
             });
 
             function calcularCambio() {
-                
                 var total = parseFloat($("#TotalPagar").val()); // Obtener el total a pagar
-                var montoEfectivo = parseFloat($("#montoPagado").val()); // Obtener el monto pagado
-                var montoTarjeta
+                var montoEfectivo = parseFloat($("#efectivo").val()); // Obtener el monto pagado con efectivo
+                var montoTarjeta = parseFloat($("#tarjeta").val()); // Obtener el monto pagado con tarjeta
 
-
-                if (!isNaN(montoEfectivo) && !isNaN(total)) {
-                    var cambio = montoEfectivo - total;
-                    $("#Cambio").val(cambio.toFixed(2)); // Mostrar el cambio en el campo de entrada
+                if (!isNaN(total) && (!isNaN(montoTarjeta) || !isNaN(montoEfectivo))) {
+                    if (!isNaN(montoTarjeta) && isNaN(montoEfectivo)) {
+                        var cambio = montoTarjeta - total;
+                        $("#Cambio").val(cambio.toFixed(2)); // Mostrar el cambio en el campo de entrada
+                    } else if (!isNaN(montoEfectivo) && isNaN(montoTarjeta)) {
+                        var cambio = montoEfectivo - total;
+                        $("#Cambio").val(cambio.toFixed(2)); // Mostrar el cambio en el campo de entrada
+                    } else if (!isNaN(montoEfectivo) && !isNaN(montoTarjeta)) {
+                        var cambio = (montoTarjeta + montoEfectivo) - total;
+                        $("#Cambio").val(cambio.toFixed(2)); // Mostrar el cambio en el campo de entrada
+                    } else {
+                        $("#Cambio").val("N/A"); // Mostrar "N/A" si los valores no son válidos
+                    }
                 } else {
                     $("#Cambio").val("N/A"); // Mostrar "N/A" si los valores no son válidos
                 }
+
             }
 
 
