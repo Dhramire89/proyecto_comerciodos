@@ -1,7 +1,7 @@
 ﻿@model Solucion_Comercio.Models.TbFactura
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crear";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -71,11 +71,18 @@
 
     <br />
 
-    <div class="col-sm-3 d-flex ">
+    <div class="col-sm-3 mr-3 d-flex ">
         <button id="btnCalcularCambio" class="btn btn-primary">Calcular Cambio</button>
         <div id="resultadoCambio" class="mt-3"></div>
+        
+        
+      
     </div>
+    <div class=" mb- 2 col-sm-3  d-flex ">
+        <label class="form-label mr-3 mt-3">Cambio</label>
+        <input class="form-control ml-3 mt-3" id="Cambio" readonly>
 
+    </div>
    
     
 
@@ -139,8 +146,29 @@
                 $("#TotalPagar").val(total.toFixed(2)); // Puedes usar toFixed para mostrar solo 2 decimales
             }
 
+            // Agrega un evento al botón para calcular el cambio
+            $("#btnCalcularCambio").click(function () {
+                calcularCambio();
+            });
+
+            function calcularCambio() {
+                
+                var total = parseFloat($("#TotalPagar").val()); // Obtener el total a pagar
+                var montoEfectivo = parseFloat($("#montoPagado").val()); // Obtener el monto pagado
+                var montoTarjeta
+
+
+                if (!isNaN(montoEfectivo) && !isNaN(total)) {
+                    var cambio = montoEfectivo - total;
+                    $("#Cambio").val(cambio.toFixed(2)); // Mostrar el cambio en el campo de entrada
+                } else {
+                    $("#Cambio").val("N/A"); // Mostrar "N/A" si los valores no son válidos
+                }
+            }
+
 
         });
+
     </script>
 
 
