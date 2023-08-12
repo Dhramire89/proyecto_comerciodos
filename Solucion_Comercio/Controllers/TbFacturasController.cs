@@ -56,7 +56,7 @@ namespace Solucion_Comercio.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdFactura,NombreCliente,NombreUsuario,FechaFactura,MontoColones,MontoDolares,MontoTarjeta,MontoTotal")] TbFactura tbFactura)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid == false)
             {
                 _context.Add(tbFactura);
                 await _context.SaveChangesAsync();
@@ -95,7 +95,7 @@ namespace Solucion_Comercio.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid == false)
             {
                 try
                 {

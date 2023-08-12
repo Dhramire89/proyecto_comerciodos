@@ -1,15 +1,15 @@
 ﻿@model Solucion_Comercio.Models.TbPendiente
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Rechazar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Delete</h1>
+<h1>Rechazar</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Estas seguro que deseas RECHAZAR este producto?</h3>
 <div>
-    <h4>TbPendiente</h4>
+    <h4>Pendientes</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -22,7 +22,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="IdPendiente" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <input type="submit" value="Rechazar" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>
 </div>

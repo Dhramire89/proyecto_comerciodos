@@ -1,5 +1,4 @@
 ﻿@model Solucion_Comercio.Models.TbFactura
-
 @{
     ViewData["Title"] = "Crear";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,25 +10,71 @@
 <hr />
 
 <div class="card">
-  <div class="card-header">
-      Factura
-  </div>
-    <div class="row align-items-end">
-        <div class="col-sm-6">
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Buscar Producto</label>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="txtBuscar">
-                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+    <form asp-action="Create">
+        <div class="card-header">
+            Factura
+            <div class="row">
+
+                <div class="form-group">
+                    <label asp-for="NombreCliente" class="control-label"></label>
+                    <input asp-for="NombreCliente" class="form-control" />
+                    <span asp-validation-for="NombreCliente" class="text-danger"></span>
+                </div>
+
+
+
+                @* <div class="form-group col-sm-6">
+                    <label asp-for="NombreCliente" class="control-label" for="cliente">Cliente:</label>
+                    <input asp-for="NombreCliente" class="form-control type="text" id="cliente" name="Cliente" required value="Cliente">
+                    <span asp-validation-for="NombreCliente" class="text-danger"></span>
+                </div> *@
+
+
+                <div class="form-group">
+                    <label asp-for="FechaFactura" class="control-label"></label>
+                    <input asp-for="FechaFactura" class="form-control" />
+                    <span asp-validation-for="FechaFactura" class="text-danger"></span>
+                </div>
+
+               @*  <div class="form-group col-sm-6">
+                    <label asp-for="FechaFactura" for="fecha">Fecha:</label>
+                    <input asp-for="FechaFactura" class="form-control" type="date" id="fecha" name="Fecha" required>
+                </div> *@
+
+              @*   <div class="form-group">
+                    <label asp-for="NombreUsuario" class="control-label"></label>
+                    <input asp-for="NombreUsuario" class="form-control" />
+                    <span asp-validation-for="NombreUsuario" class="text-danger"></span>
+                </div> *@
+
+                
+
+                <div class="form-group">
+                    <label asp-for="NombreUsuario" class="control-label"></label>
+                    <select asp-for="NombreUsuario" class="form-control" asp-items="ViewBag.NombreUsuario"></select>
+                </div>
+
+                @* <div class="form-group col-sm-6">
+                    <label asp-for="NombreUsuario" for="usuario">Usuario:</label>
+                    <input asp-for="NombreUsuario" class="form-control" type="text" id="usuario" name="Usuario" required value="Vendedor">
+                </div> *@
+            </div>
+        </div>
+
+        <div class="row align-items-end m-1">
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Buscar Producto</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="txtBuscar">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                    </div>
                 </div>
             </div>
         </div>
-        @*<div class="col-sm-6 d-flex justify-content-end">
-            <button id="btnPagar" class="btn btn-success btn-lg mr-3 mb-3 m-3" style="padding: 20px;">Pagar</button>
-        </div>*@
-    </div>
 
-        <div class="row">
+
+        <div class="row m-1">
             <div class="col-sm-12">
                 <table class="table table-bordered" id="tbproductos">
                     <thead class="table-dark">
@@ -41,7 +86,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
                     </tbody>
                 </table>
             </div>
@@ -49,48 +93,48 @@
 
 
 
+        <div class="row m-1">
+            
+            @* <div class="form-group mb-2 col-sm-3">
+                <label asp-for="MontoTotal" class="form-label">Total</label>
+                <input asp-for="MontoTotal" class="form-control" id="TotalPagar">
+            </div> *@
 
+            <div class="form-group mb-2 col-sm-3">
+                <label asp-for="MontoTotal" class="form-label">Total</label>
+                <input asp-for="MontoTotal" class="form-control" id="TotalPagar">
+            </div>
+            <div class="form-group mb-2 col-sm-3">
+                <label asp-for="MontoTarjeta" class="form-label">Tarjeta</label>
+                <input asp-for="MontoTarjeta" class="form-control" id="tarjeta">
+            </div>
 
+            <div class="form-group mb-2 col-sm-3">
+                <label asp-for="MontoColones" class="form-label">Efectivo</label>
+                <input asp-for="MontoColones" class="form-control" id="efectivo">
+            </div>
 
+            <div class="form-group mb-2 col-sm-3">
+                <label asp-for="MontoDolares" class="form-label">Dolares</label>
+                <input asp-for="MontoDolares" class="form-control" id="dolares">
+            </div>
 
-    <div class="mb-2 col-sm-3">
-        <label class="form-label">Total</label>
-       
-        <input  class="form-control" id="TotalPagar" readonly>
-    </div>
+           
 
-    <div class="mb-2 col-sm-3">
-        <label class="form-label">Tarjeta</label>
-        <input class="form-control" id="tarjeta">
-    </div>
-
-    <div class="mb-2 col-sm-3">
-        <label class="form-label">Efectivo</label>
-        <input class="form-control" id="efectivo">
-    </div>
-
-    <br />
-
-    <div class="col-sm-3 mr-3 d-flex ">
+            <div class=" mb-2 col-sm-3  d-flex ">
+                <label class="form-label mr-3 mt-3">Cambio</label>
+                <input class="form-control ml-3 mt-3" id="Cambio" readonly>
+            </div>
+        </div>
+        <button id="realizarpago" type="submit" value="Create" class="btn btn-success m-3 " style="padding: 20px ">Efectuar pago</button>
+        
+    </form>
+    <div class="col-sm-3 d-flex ">
         <button id="btnCalcularCambio" class="btn btn-primary">Calcular Cambio</button>
-        <div id="resultadoCambio" class="mt-3"></div>
-        
-        
-      
-    </div>
-    <div class=" mb- 2 col-sm-3  d-flex ">
-        <label class="form-label mr-3 mt-3">Cambio</label>
-        <input class="form-control ml-3 mt-3" id="Cambio" readonly>
-
     </div>
    
-    
+</div>
 
-    <button id="realizarpago" class="btn btn-success mr-3 mb-3 m-3 " style="padding: 20px ">Efectuar pago</button>
-    <div id="realizarPago" class="mt-3"></div>
-
-
-  </div>
 
 <div>
     <a asp-action="Index">Back to List</a>
@@ -99,7 +143,9 @@
 @*//este fue un comentario agregado*@
 
 @section Scripts {
-
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
     <script>
         $(document).ready(function () {
             $("#txtBuscar").autocomplete({
@@ -143,7 +189,7 @@
                 });
 
                 // Mostrar el total en el campo de entrada
-                $("#TotalPagar").val(total.toFixed(2)); // Puedes usar toFixed para mostrar solo 2 decimales
+                $("#TotalPagar").val(total.toFixed(0)); // Puedes usar toFixed para mostrar solo 2 decimales
             }
 
             // Agrega un evento al botón para calcular el cambio
@@ -178,8 +224,24 @@
 
         });
 
+
+
+
+    </script>
+    <script>
+        // Obtener el campo de fecha por su ID
+        var fechaInput = document.getElementById("fecha");
+
+        // Crear una fecha actual
+        var fechaActual = new Date();
+
+        // Formatear la fecha en el formato requerido (YYYY-MM-DD)
+        var formatoFecha = fechaActual.toISOString().substr(0, 10);
+
+        // Establecer la fecha actual como valor por defecto
+        fechaInput.value = formatoFecha;
     </script>
 
 
-}
+    }
 

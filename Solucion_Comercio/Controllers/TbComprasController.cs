@@ -61,7 +61,7 @@ namespace Solucion_Comercio.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdCompra,NombreUsuario,FechaCompra,IdProducto,CantidadCompra")] TbCompra tbCompra)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid==false)
             {
                 _context.Add(tbCompra);
                 await _context.SaveChangesAsync();

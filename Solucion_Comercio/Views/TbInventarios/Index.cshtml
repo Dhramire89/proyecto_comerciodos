@@ -7,9 +7,9 @@
 
 <h1>Inventario</h1>
 
-<p>
+@* <p>
     <a asp-action="Create" class="btn btn-success">Crear Inventario</a>
-</p>
+</p> *@
 <table class="table">
     <thead>
         <tr>
@@ -29,13 +29,13 @@
                 @Html.DisplayFor(modelItem => item.Existencia)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdProductoNavigation.IdProducto)
+                @Html.DisplayFor(modelItem => item.IdProductoNavigation.NombreProducto)
             </td>
-            <td>
+            @* <td>
                     <a asp-action="Edit" class="btn btn-danger" asp-route-id="@item.IdInventario">Editar</a> |
                     <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.IdInventario">Detalles</a> |
                     <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.IdInventario">Eliminar</a>
-            </td>
+            </td> *@
         </tr>
 }
     </tbody>

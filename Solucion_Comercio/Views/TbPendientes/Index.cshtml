@@ -7,9 +7,9 @@
 
 <h1>Pendientes</h1>
 
-<p>
+@* <p>
     <a asp-action="Create" class="btn btn-success">Crear Pendiente</a>
-</p>
+</p> *@
 <table class="table">
     <thead>
         <tr>
@@ -26,9 +26,9 @@
                 @Html.DisplayFor(modelItem => item.IdCompraNavigation.IdCompra)
             </td>
             <td>
-                    <a asp-action="Edit" class="btn btn-danger" asp-route-id="@item.IdPendiente">Editar</a> |
-                    <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.IdPendiente">Detalles</a> |
-                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.IdPendiente">Eliminar</a>
+                    <a asp-action="Edit" class="btn btn-success" asp-route-id="@item.IdPendiente">Aprobar</a> |@* 
+                    <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.IdPendiente">Detalles</a> | *@
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.IdPendiente">Rechazar</a>
             </td>
         </tr>
 }
