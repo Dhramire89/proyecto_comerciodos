@@ -54,9 +54,7 @@ namespace Solucion_Comercio.Controllers
             return View();
         }
 
-        // POST: TbPendientes/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdPendiente,IdCompra")] TbPendiente tbPendiente)
@@ -71,26 +69,60 @@ namespace Solucion_Comercio.Controllers
             return View(tbPendiente);
         }
 
-        // GET: TbPendientes/Edit/5
+
+
+        // GET: TbPendientes/  Aprobar *******************************************************************************
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.TbPendientes == null)
+            if (id == null)
             {
-                return NotFound();
+                return NotFound(); // Si no se proporciona un ID válido, retornar "No encontrado"
             }
 
-            var tbPendiente = await _context.TbPendientes.FindAsync(id);
-            if (tbPendiente == null)
+            
+            var compra = await _context.TbCompras.FirstOrDefaultAsync(c => c.IdCompra == id.Value);
+
+
+            if (compra == null)
             {
-                return NotFound();
+                return NotFound(); // Si la compra no se encuentra, retornar "No encontrado"
             }
-            ViewData["IdCompra"] = new SelectList(_context.TbCompras, "IdCompra", "IdCompra", tbPendiente.IdCompra);
-            return View(tbPendiente);
+
+            using var transaction = _context.Database.BeginTransaction(); // Iniciar transacción de base de datos
+
+            try
+            {
+                var idProducto = compra.IdProducto; // ID del producto en la compra
+                var cantidadCompra = compra.CantidadCompra; // Cantidad del producto en la compra
+
+                var productoEnInventario = await _context.TbInventarios.FirstOrDefaultAsync(i => i.IdProducto == idProducto);
+
+                if (productoEnInventario != null)
+                {
+                    productoEnInventario.Existencia += cantidadCompra; // Si el producto existe en el inventario, aumentar la cantidad en inventario
+                }
+                else
+                {
+                    _context.TbInventarios.Add(new TbInventario
+                    {
+                        IdProducto = idProducto, // Si el producto no existe en el inventario, agregarlo al inventario
+                        Existencia = cantidadCompra
+                    });
+                }
+
+                _context.TbCompras.Remove(compra); // Eliminar el registro de compra de la base de datos
+                await _context.SaveChangesAsync(); // Guardar los cambios en la base de datos
+                transaction.Commit(); // Confirmar la transacción
+
+                return RedirectToAction(nameof(Index)); // Redirigir a la página principal u otra acción después de completar la transacción
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback(); // Revertir la transacción en caso de error
+                return BadRequest($"Error al aprobar la compra: {ex.Message}"); // Retornar un mensaje de error
+            }
         }
 
-        // POST: TbPendientes/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdPendiente,IdCompra")] TbPendiente tbPendiente)
