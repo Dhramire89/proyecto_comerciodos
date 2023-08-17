@@ -42,7 +42,7 @@ public partial class TbUsuario
     public virtual TbRole RolUsuarioNavigation { get; set; } = null!;
 
     public virtual ICollection<TbFactura> TbFacturas { get; set; } = new List<TbFactura>();
+   
 
-    
 
 }

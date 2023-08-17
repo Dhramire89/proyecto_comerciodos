@@ -81,8 +81,7 @@ namespace Solucion_Comercio.Controllers
 
             
             var compra = await _context.TbCompras.FirstOrDefaultAsync(c => c.IdCompra == id.Value);
-
-
+            
             if (compra == null)
             {
                 return NotFound(); // Si la compra no se encuentra, retornar "No encontrado"
@@ -163,16 +162,23 @@ namespace Solucion_Comercio.Controllers
             {
                 return NotFound();
             }
-
-            var tbPendiente = await _context.TbPendientes
-                .Include(t => t.IdCompraNavigation)
-                .FirstOrDefaultAsync(m => m.IdPendiente == id);
-            if (tbPendiente == null)
+            try
             {
-                return NotFound();
-            }
+                var tbPendiente = await _context.TbPendientes
+                    .Include(t => t.IdCompraNavigation)
+                    .FirstOrDefaultAsync(m => m.IdPendiente == id);
+                if (tbPendiente == null)
+                {
+                    return NotFound();
+                }
 
-            return View(tbPendiente);
+                return View(tbPendiente);
+            }
+            catch (Exception ex)
+            {
+                
+                return BadRequest($"Error al aprobar la compra: {ex.Message}"); // Retornar un mensaje de error
+            }
         }
 
         // POST: TbPendientes/Delete/5

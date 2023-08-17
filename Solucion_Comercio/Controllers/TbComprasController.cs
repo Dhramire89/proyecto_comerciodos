@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +6,7 @@ using Solucion_Comercio.Models;
 
 namespace Solucion_Comercio.Controllers
 {
-  
+
     [Authorize(Policy = "PoliticaCocinero")]
     public class TbComprasController : Controller
     {
@@ -35,7 +31,6 @@ namespace Solucion_Comercio.Controllers
             {
                 return NotFound();
             }
-
             var tbCompra = await _context.TbCompras
                 .Include(t => t.IdProductoNavigation)
                 .FirstOrDefaultAsync(m => m.IdCompra == id);
@@ -43,7 +38,6 @@ namespace Solucion_Comercio.Controllers
             {
                 return NotFound();
             }
-
             return View(tbCompra);
         }
 
@@ -54,24 +48,56 @@ namespace Solucion_Comercio.Controllers
             return View();
         }
 
-        // POST: TbCompras/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdCompra,NombreUsuario,FechaCompra,IdProducto,CantidadCompra")] TbCompra tbCompra)
         {
-            if (ModelState.IsValid==false)
+            try
             {
-                _context.Add(tbCompra);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid == false)
+                {
+                    // Agregar el registro de compra en la tabla TbCompras
+                    _context.TbCompras.Add(tbCompra);
+                    await _context.SaveChangesAsync();
+                    try
+                    {
+                        // Agregar un registro en la tabla TbPendientes con el valor de IdCompra
+                        _context.TbPendientes.Add(new TbPendiente
+                        {
+                            IdCompra = tbCompra.IdCompra
+                        });
+
+                        await _context.SaveChangesAsync();
+
+                        return RedirectToAction(nameof(Index));
+                    }
+                    catch (Exception ex)
+                    {
+
+                        return BadRequest($"Error al crear pendiente: {ex.Message}"); // Retornar un mensaje de error
+                    }
+                }
+                else
+                {
+                    // Si el modelo no es válido, configurar el SelectList para IdProducto
+                    ViewData["IdProducto"] = new SelectList(_context.TbProductos, "IdProducto", "NombreProducto", tbCompra.IdProducto);
+                    return View(tbCompra);
+                }
             }
-            ViewData["IdProducto"] = new SelectList(_context.TbProductos, "IdProducto", "IdProducto", tbCompra.IdProducto);
-            return View(tbCompra);
+            catch (Exception ex)
+            {
+                // Manejar la excepción adecuadamente (puedes registrarla, mostrar un mensaje de error, etc.)
+                ModelState.AddModelError("", $"Error al crear la compra: {ex.Message}");
+
+                // Configurar el SelectList para IdProducto nuevamente
+                ViewData["IdProducto"] = new SelectList(_context.TbProductos, "IdProducto", "NombreProducto", tbCompra.IdProducto);
+
+                return View(tbCompra);
+            }
         }
 
-        // GET: TbCompras/Edit/5
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.TbCompras == null)
@@ -88,9 +114,7 @@ namespace Solucion_Comercio.Controllers
             return View(tbCompra);
         }
 
-        // POST: TbCompras/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdCompra,NombreUsuario,FechaCompra,IdProducto,CantidadCompra")] TbCompra tbCompra)
@@ -157,14 +181,14 @@ namespace Solucion_Comercio.Controllers
             {
                 _context.TbCompras.Remove(tbCompra);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         private bool TbCompraExists(int id)
         {
-          return (_context.TbCompras?.Any(e => e.IdCompra == id)).GetValueOrDefault();
+            return (_context.TbCompras?.Any(e => e.IdCompra == id)).GetValueOrDefault();
         }
     }
 }

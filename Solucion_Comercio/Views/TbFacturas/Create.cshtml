@@ -20,44 +20,18 @@
                     <input asp-for="NombreCliente" class="form-control" />
                     <span asp-validation-for="NombreCliente" class="text-danger"></span>
                 </div>
-
-
-
-                @* <div class="form-group col-sm-6">
-                    <label asp-for="NombreCliente" class="control-label" for="cliente">Cliente:</label>
-                    <input asp-for="NombreCliente" class="form-control type="text" id="cliente" name="Cliente" required value="Cliente">
-                    <span asp-validation-for="NombreCliente" class="text-danger"></span>
-                </div> *@
-
-
+             
                 <div class="form-group">
                     <label asp-for="FechaFactura" class="control-label"></label>
                     <input asp-for="FechaFactura" class="form-control" />
                     <span asp-validation-for="FechaFactura" class="text-danger"></span>
                 </div>
 
-               @*  <div class="form-group col-sm-6">
-                    <label asp-for="FechaFactura" for="fecha">Fecha:</label>
-                    <input asp-for="FechaFactura" class="form-control" type="date" id="fecha" name="Fecha" required>
-                </div> *@
-
-              @*   <div class="form-group">
-                    <label asp-for="NombreUsuario" class="control-label"></label>
-                    <input asp-for="NombreUsuario" class="form-control" />
-                    <span asp-validation-for="NombreUsuario" class="text-danger"></span>
-                </div> *@
-
-                
-
                 <div class="form-group">
                     <label asp-for="NombreUsuario" class="control-label"></label>
                     <select asp-for="NombreUsuario" class="form-control" asp-items="ViewBag.NombreUsuario"></select>
                 </div>
-
-                @* <div class="form-group col-sm-6">
-                    <label asp-for="NombreUsuario" for="usuario">Usuario:</label>
-                    <input asp-for="NombreUsuario" class="form-control" type="text" id="usuario" name="Usuario" required value="Vendedor">
-                </div> *@
+              
             </div>
         </div>
 
@@ -94,11 +68,8 @@
 
 
         <div class="row m-1">
-            
-            @* <div class="form-group mb-2 col-sm-3">
-                <label asp-for="MontoTotal" class="form-label">Total</label>
-                <input asp-for="MontoTotal" class="form-control" id="TotalPagar">
-            </div> *@
+
+         
 
             <div class="form-group mb-2 col-sm-3">
                 <label asp-for="MontoTotal" class="form-label">Total</label>
@@ -119,7 +90,10 @@
                 <input asp-for="MontoDolares" class="form-control" id="dolares">
             </div>
 
-           
+            <div class=" mb-2 col-sm-3  d-flex ">
+                <label class="form-label mr-3 mt-3"> Precio Cambio Dolar </label>
+                <input class="form-control ml-3 mt-3" id="tipoCambio" value="540" readonly>
+            </div>
 
             <div class=" mb-2 col-sm-3  d-flex ">
                 <label class="form-label mr-3 mt-3">Cambio</label>
@@ -127,12 +101,12 @@
             </div>
         </div>
         <button id="realizarpago" type="submit" value="Create" class="btn btn-success m-3 " style="padding: 20px ">Efectuar pago</button>
-        
+
     </form>
     <div class="col-sm-3 d-flex ">
         <button id="btnCalcularCambio" class="btn btn-primary">Calcular Cambio</button>
     </div>
-   
+
 </div>
 
 
@@ -198,9 +172,11 @@
             });
 
             function calcularCambio() {
-                var total = parseFloat($("#TotalPagar").val()); // Obtener el total a pagar
-                var montoEfectivo = parseFloat($("#efectivo").val()); // Obtener el monto pagado con efectivo
-                var montoTarjeta = parseFloat($("#tarjeta").val()); // Obtener el monto pagado con tarjeta
+                var total = parseFloat($("#TotalPagar").val());
+                var montoEfectivo = parseFloat($("#efectivo").val());
+                var montoTarjeta = parseFloat($("#tarjeta").val());
+                var montoDolares = parseFloat($("#dolares").val());
+                var precioDolar = parseFloat($("#tipoCambio").val());
 
                 if (!isNaN(total) && (!isNaN(montoTarjeta) || !isNaN(montoEfectivo))) {
                     if (!isNaN(montoTarjeta) && isNaN(montoEfectivo)) {
@@ -215,11 +191,57 @@
                     } else {
                         $("#Cambio").val("N/A"); // Mostrar "N/A" si los valores no son válidos
                     }
-                } else {
-                    $("#Cambio").val("N/A"); // Mostrar "N/A" si los valores no son válidos
-                }
+                } else if (!isNaN(montoDolares)) {
+                    var montoPagadoDolares = montoDolares * precioDolar;
+                    var total = parseFloat($("#TotalPagar").val());
+                    //var montoTotalPagado = montoTarjeta + montoEfectivo + montoPagadoDolares;
+                    var cambioDolares = montoPagadoDolares - total;
 
+
+                    console.log("Monto Pagado en Dólares:", montoPagadoDolares.toFixed(2));
+                    console.log("total por:", total.toFixed(2));
+                    console.log("vuelto en colones:", cambioDolares.toFixed(2));
+
+                    $("#Cambio").val(cambioDolares.toFixed(2));
+
+                    // if (montoTotalPagado >= total) {
+                    //     $("#Cambio").val(cambioDolares.toFixed(2));
+                    // } else {
+                    //     $("#Cambio").val("Falta pago");
+                    // }
+                } else {
+                    $("#Cambio").val("N/A");
+                }
             }
+
+
+            // function calcularCambio() {
+            //     var total = parseFloat($("#TotalPagar").val()); // Obtener el total a pagar
+            //     var montoEfectivo = parseFloat($("#efectivo").val()); // Obtener el monto pagado con efectivo
+            //     var montoTarjeta = parseFloat($("#tarjeta").val()); // Obtener el monto pagado con tarjeta
+            //     var montoDolares = parseFloat($("#dolares").val()); // Obtener el monto pagado con tarjeta
+            //     var precioDolar = parseFloat($("#tipoCambio").val()); // Obtener el tipo de cambio 
+                
+
+
+            //     if (!isNaN(total) && (!isNaN(montoTarjeta) || !isNaN(montoEfectivo))) {
+            //         if (!isNaN(montoTarjeta) && isNaN(montoEfectivo)) {
+            //             var cambio = montoTarjeta - total;
+            //             $("#Cambio").val(cambio.toFixed(2)); // Mostrar el cambio en el campo de entrada
+            //         } else if (!isNaN(montoEfectivo) && isNaN(montoTarjeta)) {
+            //             var cambio = montoEfectivo - total;
+            //             $("#Cambio").val(cambio.toFixed(2)); // Mostrar el cambio en el campo de entrada
+            //         } else if (!isNaN(montoEfectivo) && !isNaN(montoTarjeta)) {
+            //             var cambio = (montoTarjeta + montoEfectivo) - total;
+            //             $("#Cambio").val(cambio.toFixed(2)); // Mostrar el cambio en el campo de entrada
+            //         } else {
+            //             $("#Cambio").val("N/A"); // Mostrar "N/A" si los valores no son válidos
+            //         }
+            //     } else {
+            //         $("#Cambio").val("N/A"); // Mostrar "N/A" si los valores no son válidos
+            //     }
+
+            // }
 
 
         });
