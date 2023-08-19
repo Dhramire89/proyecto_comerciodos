@@ -19,7 +19,7 @@ namespace Solucion_Comercio.Controllers
         {
             _context = context;
         }
-
+        //cu
         // GET: TbProductoes
         public async Task<IActionResult> Index()
         {
