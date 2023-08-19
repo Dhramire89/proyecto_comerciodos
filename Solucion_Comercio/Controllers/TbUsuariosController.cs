@@ -25,7 +25,7 @@ namespace Solucion_Comercio.Controllers
         {
             var bdcomercioContext = _context.TbUsuarios.Include(t => t.EstadoUsuarioNavigation).Include(t => t.RolUsuarioNavigation);
             return View(await bdcomercioContext.ToListAsync());
-            return View(await bdcomercioContext.ToListAsync());
+            //return View(await bdcomercioContext.ToListAsync());
 
         }
 
