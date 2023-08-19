@@ -41,6 +41,8 @@ public partial class TbUsuario
     [Display(Name = "Rol")]
     public virtual TbRole RolUsuarioNavigation { get; set; } = null!;
 
+    [Display(Name = "Intentos")]
+    public int Intentos { get; set; }
     public virtual ICollection<TbFactura> TbFacturas { get; set; } = new List<TbFactura>();
    
 

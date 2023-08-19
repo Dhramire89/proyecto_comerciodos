@@ -1,13 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Solucion_Comercio.Models;
-
 using Solucion_Comercio.Servicios.Contrato;
 using Solucion_Comercio.Servicios.Implementacion;
-
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Identity;
-using Optivem.Framework.Core.Domain;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,15 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 
-builder.Services.AddDbContext<BdcomercioContext>(options => {
+builder.Services.AddDbContext<BdcomercioContext>(options =>
+{
     options.UseSqlServer(builder.Configuration.GetConnectionString("Conexion"));
 }
 );
 
-
 builder.Services.AddScoped<IUsuarioService, UsuarioService>(); // permite el uso del servicio dentro de cualquier controlador 
-
-
 
 
 // ... Configuracion de las politicas de acceso a las pantallas   ...
@@ -37,25 +31,13 @@ builder.Services.AddAuthorization(options =>
         policy.RequireClaim("rolUsuario", "2", "3"));
 
     options.AddPolicy("PoliticaAdiministrador", policy =>
-        policy.RequireClaim("rolUsuario", "3")); 
+        policy.RequireClaim("rolUsuario", "3"));
 
     options.AddPolicy("PoliticaCocinero", policy =>
         policy.RequireClaim("rolUsuario", "1002", "3"));
 
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -68,14 +50,15 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     });
 
 //metodo para borrar cache y que no permita volver cuando se cerro secion 
-builder.Services.AddControllersWithViews(options => {
+builder.Services.AddControllersWithViews(options =>
+{
     options.Filters.Add(
-        new ResponseCacheAttribute { 
+        new ResponseCacheAttribute
+        {
             NoStore = true,
-            Location= ResponseCacheLocation.None,
+            Location = ResponseCacheLocation.None,
         }
         );
-
 });
 
 

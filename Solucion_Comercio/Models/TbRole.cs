@@ -8,7 +8,6 @@ public partial class TbRole
 {
     public int IdRol { get; set; }
 
-
    [Display(Name = "Roles")]
     public string NombreRol { get; set; } = null!;
 

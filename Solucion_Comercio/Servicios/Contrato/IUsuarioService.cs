@@ -1,13 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Solucion_Comercio.Models; 
-
+﻿using Solucion_Comercio.Models;
 
 namespace Solucion_Comercio.Servicios.Contrato
 {
     public interface IUsuarioService
     {
-        Task<TbUsuario> GetUsuario(string correo, string clave);
-
+        TbUsuario GetUsuario(string correo);
         //Task<TbUsuario> SaveUsuario(TbUsuario modelo );
     }
 }

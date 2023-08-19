@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Solucion_Comercio.Models.TbBitacora>
+
+@{
+    ViewData["Title"] = "Bitacora";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Bitacora</h1>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+
+                @Html.DisplayNameFor(model => model.IdUsuario )
+            </th>
+            <th>
+
+                @Html.DisplayNameFor(model => model.Entrada )
+            </th>
+            <th>
+
+                @Html.DisplayNameFor(model => model.Salida )
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdUsuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Entrada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salida)
+                </td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.IdBitacora">Editar</a> |
+                    <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.IdBitacora">Detalles</a> |
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.IdBitacora">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
