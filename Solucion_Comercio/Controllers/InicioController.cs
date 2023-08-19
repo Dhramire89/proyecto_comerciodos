@@ -52,7 +52,7 @@ namespace Solucion_Comercio.Controllers
 
                         try
                         {
-                            // Agregar la nueva entrada a la tabla
+                            // Agregar la nueva entrada a la tabla bitacora
                             _context.TbBitacoras.Add(nuevaEntrada);
                             _context.SaveChanges();
                         }
@@ -77,29 +77,36 @@ namespace Solucion_Comercio.Controllers
                             CookieAuthenticationDefaults.AuthenticationScheme,
                             new ClaimsPrincipal(claimsIdentity),
                             properties);
+                        usuario_encontrado.Intentos = 0;
+                        _context.Update(usuario_encontrado);
+                        await _context.SaveChangesAsync();
                         return RedirectToAction("Index", "Home");
                     }
                     else
-
+                        if (usuario_encontrado.Intentos <= 3)
+                    {
                         try
                         {
-                            // Agregar la nueva entrada a la tabla
+                            // agregar un intento fallido a la tabla usuarios
                             usuario_encontrado.Intentos += 1;
                             //_context.TbUsuarios.SaveChanges(usuario_encontrado);
                             _context.Update(usuario_encontrado);
                             await _context.SaveChangesAsync();
+                            ViewData["Mensaje"] = "Al tercer intento incorrecto el usuario se bloquera";
                         }
                         catch (Exception ex)
                         {
                             return BadRequest($"Error sumar intento: {ex.Message}"); // Retornar un mensaje de error
                         }
+                    }
+                       
 
-                    if (usuario_encontrado.Intentos == 3)
-                    {
-                        ViewData["Mensaje"] = "Usuario Bloqueado";
+                    if (usuario_encontrado.Intentos >= 3)
+                    {                       
                         usuario_encontrado.EstadoUsuario = 2; 
                         _context.Update(usuario_encontrado);
                         await _context.SaveChangesAsync();
+                        ViewData["Mensaje"] = "Contactar con el Administrador para desbloquear el usuario";
                     }
                     return View();
                 }
