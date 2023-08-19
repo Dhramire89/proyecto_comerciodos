@@ -15,10 +15,10 @@
 
                 <div class="form-group">
                     <label asp-for="NombreCliente" class="control-label"></label>
-                    <input asp-for="NombreCliente" class="form-control" />
+                    <input asp-for="NombreCliente" class="form-control" id="nombreCliente" />
                     <span asp-validation-for="NombreCliente" class="text-danger"></span>
                 </div>
-             
+
                 <div class="form-group">
                     <label asp-for="FechaFactura" class="control-label"></label>
                     <input asp-for="FechaFactura" class="form-control" />
@@ -29,7 +29,7 @@
                     <label asp-for="NombreUsuario" class="control-label"></label>
                     <select asp-for="NombreUsuario" class="form-control" asp-items="ViewBag.NombreUsuario"></select>
                 </div>
-              
+
             </div>
         </div>
 
@@ -67,7 +67,7 @@
 
         <div class="row m-1">
 
-         
+
 
             <div class="form-group mb-2 col-sm-3">
                 <label asp-for="MontoTotal" class="form-label">Total</label>
@@ -218,8 +218,8 @@
             //     var montoEfectivo = parseFloat($("#efectivo").val()); // Obtener el monto pagado con efectivo
             //     var montoTarjeta = parseFloat($("#tarjeta").val()); // Obtener el monto pagado con tarjeta
             //     var montoDolares = parseFloat($("#dolares").val()); // Obtener el monto pagado con tarjeta
-            //     var precioDolar = parseFloat($("#tipoCambio").val()); // Obtener el tipo de cambio 
-                
+            //     var precioDolar = parseFloat($("#tipoCambio").val()); // Obtener el tipo de cambio
+
 
 
             //     if (!isNaN(total) && (!isNaN(montoTarjeta) || !isNaN(montoEfectivo))) {
@@ -244,7 +244,45 @@
 
         });
 
+        // $('#realizarpago').click(function (event) {
+        //     event.preventDefault(); //This prevents the default action
+        //     alert("Hello"); //Show the alert
+        //     debugger;
+        //     var listaProductos = [];
 
+        //     var factura = {
+        //         nombreUsuario: $("#nombreCliente").val(),
+        //         productos: []
+        //     };
+
+        //     var productos = {
+        //         label: '',
+        //         nombreProducto: '',
+        //         precioProducto: 31
+        //     };
+        //     $("#tbproductos tbody tr").each(function () {
+        //         // var precio = parseFloat($(this).find("td:eq(3)").text());
+        //         productos.precioProducto = parseFloat($(this).find("td:eq(3)").text());
+
+        //         factura.productos.push(productos);
+        //     });
+
+
+        //     console.log(listaProductos);
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "/TbFacturas/Create",
+        //         data: JSON.stringify(factura),
+        //         dataType: "json",
+        //         contentType: 'application/json; charset=utf-8',
+        //         success: function (data) {
+        //             alert(data.msg);
+        //         },
+        //         error: function () {
+        //             alert("Error occured!!")
+        //         }
+        //     });
+        // });
 
 
     </script>

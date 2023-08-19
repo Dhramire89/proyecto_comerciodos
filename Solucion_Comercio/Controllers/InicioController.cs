@@ -14,10 +14,11 @@ namespace Solucion_Comercio.Controllers
         //private readonly BdcomercioContext _context;
 
         private readonly IUsuarioService _usuarioServicio;
-
-        public InicioController(IUsuarioService usuarioServicio)
+        private readonly BdcomercioContext _context;
+        public InicioController(IUsuarioService usuarioServicio, BdcomercioContext context)
         {
             _usuarioServicio = usuarioServicio;
+            _context = context;
         }
 
         public IActionResult IniciarSeccion()
@@ -31,7 +32,6 @@ namespace Solucion_Comercio.Controllers
         public async Task<IActionResult> IniciarSeccion(string correo, string clave)
         {
             TbUsuario usuario_encontrado = _usuarioServicio.GetUsuario(correo);
-            using BdcomercioContext _context = new BdcomercioContext();
 
             if (usuario_encontrado != null)
             {
@@ -43,22 +43,23 @@ namespace Solucion_Comercio.Controllers
                         int idRol = usuario_encontrado.RolUsuario;
 
                         //// Crear una nueva entrada en la tabla TbBitacota
-                        //TbBitacora nuevaEntrada = new TbBitacora
-                        //{
-                        //    IdUsuario = usuario_encontrado.IdUsuario, // ID del usuario
-                        //    Entrada = DateTime.Now // Fecha y hora actual
-                        //};
+                        TbBitacora nuevaEntrada = new TbBitacora
+                        {
+                            IdUsuario = usuario_encontrado.IdUsuario, // ID del usuario
+                            Entrada = DateTime.Now, // Fecha y hora actual
+                            Salida = DateTime.Now,
+                        };
 
-                        //try
-                        //{
-                        //    // Agregar la nueva entrada a la tabla
-                        //    _context.TbBitacoras.Add(nuevaEntrada);
-                        //    _context.SaveChanges();
-                        //}
-                        //catch (Exception ex)
-                        //{
-                        //    return BadRequest($"Error al crear bitacoara: {ex.Message}"); // Retornar un mensaje de error
-                        //}
+                        try
+                        {
+                            // Agregar la nueva entrada a la tabla
+                            _context.TbBitacoras.Add(nuevaEntrada);
+                            _context.SaveChanges();
+                        }
+                        catch (Exception ex)
+                        {
+                            return BadRequest($"Error al crear bitacoara: {ex.Message}"); // Retornar un mensaje de error
+                        }
 
                         // claims para la seguridad de cada usuario
                         List<Claim> claims = new List<Claim>(){
@@ -85,7 +86,8 @@ namespace Solucion_Comercio.Controllers
                             // Agregar la nueva entrada a la tabla
                             usuario_encontrado.Intentos += 1;
                             //_context.TbUsuarios.SaveChanges(usuario_encontrado);
-                            _context.SaveChanges();
+                            _context.Update(usuario_encontrado);
+                            await _context.SaveChangesAsync();
                         }
                         catch (Exception ex)
                         {
@@ -95,6 +97,9 @@ namespace Solucion_Comercio.Controllers
                     if (usuario_encontrado.Intentos == 3)
                     {
                         ViewData["Mensaje"] = "Usuario Bloqueado";
+                        usuario_encontrado.EstadoUsuario = 2; 
+                        _context.Update(usuario_encontrado);
+                        await _context.SaveChangesAsync();
                     }
                     return View();
                 }
