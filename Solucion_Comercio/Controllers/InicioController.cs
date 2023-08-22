@@ -35,7 +35,7 @@ namespace Solucion_Comercio.Controllers
 
             if (usuario_encontrado != null)
             {
-                try
+                try //ad
                 {
                     TempData["UsuarioId"] = usuario_encontrado.IdUsuario;
 
