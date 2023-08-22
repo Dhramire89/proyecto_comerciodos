@@ -6,7 +6,7 @@ using Solucion_Comercio.Models;
 
 namespace Solucion_Comercio.Controllers
 {
-    [Authorize(Policy =  "PoliticaCajero")]
+    [Authorize(Policy = "PoliticaSalonero")]
     public class TbFacturasController : Controller
     {
         private readonly BdcomercioContext _context;

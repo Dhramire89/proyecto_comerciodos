@@ -10,11 +10,9 @@ namespace Solucion_Comercio.Controllers
 {
     public class InicioController : Controller
     {
-
-        //private readonly BdcomercioContext _context;
-
         private readonly IUsuarioService _usuarioServicio;
         private readonly BdcomercioContext _context;
+
         public InicioController(IUsuarioService usuarioServicio, BdcomercioContext context)
         {
             _usuarioServicio = usuarioServicio;
@@ -23,10 +21,8 @@ namespace Solucion_Comercio.Controllers
 
         public IActionResult IniciarSeccion()
         {
-
             return View();
         }
-
 
         [HttpPost]
         public async Task<IActionResult> IniciarSeccion(string correo, string clave)
@@ -122,15 +118,6 @@ namespace Solucion_Comercio.Controllers
             }
         }
 
-        //public async Task<IActionResult> CerrarSeccion()
-        //{
-        //    await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
-
-        //    return RedirectToAction("IniciarSeccion", "Inicio");
-        //    //return View();
-        //}
-
         public async Task<IActionResult> CerrarSeccion()
         {
             if (TempData.ContainsKey("UsuarioId"))
@@ -163,7 +150,6 @@ namespace Solucion_Comercio.Controllers
                     return BadRequest($"Error al actualizar la bitacora: {ex.Message}"); // Retornar un mensaje de error
                 }
 
-
                 TempData.Remove("UsuarioId"); // Eliminar el valor de TempData después de usarlo
 
                 return RedirectToAction("IniciarSeccion", "Inicio");
@@ -173,10 +159,6 @@ namespace Solucion_Comercio.Controllers
                 return BadRequest("No se pudo obtener el ID del usuario.");
             }
         }
-
-
-
-
     }
 
 }

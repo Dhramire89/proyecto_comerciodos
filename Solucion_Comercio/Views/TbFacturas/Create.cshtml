@@ -90,9 +90,16 @@
 
             <div class=" mb-2 col-sm-3  d-flex ">
                 <label class="form-label mr-3 mt-3"> Precio Cambio Dolar </label>
-                <input class="form-control ml-3 mt-3" id="tipoCambio" value="540" readonly>
+                <input class="form-control ml-3 mt-3" id="tipoCambio" value="540">
             </div>
-
+            <div class=" mb-2 col-sm-3  d-flex ">
+                <label class="form-label mr-3 mt-3"> Impuestos </label>
+                <input class="form-control ml-3 mt-3" id="impuestos" value="13%" readonly>
+            </div>
+            <div class=" mb-2 col-sm-3  d-flex ">
+                <label class="form-label mr-3 mt-3"> Propina </label>
+                <input class="form-control ml-3 mt-3" id="propina" value="10%" readonly>
+            </div>
             <div class=" mb-2 col-sm-3  d-flex ">
                 <label class="form-label mr-3 mt-3">Cambio</label>
                 <input class="form-control ml-3 mt-3" id="Cambio" readonly>
@@ -152,7 +159,6 @@
                 }
             });
 
-
             function calcularTotalPrecioProductos() {
                 var total = 0;
                 $("#tbproductos tbody tr").each(function () {
@@ -160,9 +166,19 @@
                     total += isNaN(precio) ? 0 : precio;
                 });
 
-                // Mostrar el total en el campo de entrada
-                $("#TotalPagar").val(total.toFixed(0)); // Puedes usar toFixed para mostrar solo 2 decimales
+                // Calcular el 13% de impuestos
+                var impuestos = total * 0.13;
+
+                // Calcular el 10% de propina
+                var propina = total * 0.10;
+
+                // Sumar impuestos y propina al total
+                var totalConImpuestosYPropina = total + impuestos + propina;
+
+                // Mostrar el total con impuestos y propina en el campo de entrada
+                $("#TotalPagar").val(totalConImpuestosYPropina.toFixed(0)); // Puedes usar toFixed para mostrar solo 2 decimales
             }
+
 
             // Agrega un evento al botón para calcular el cambio
             $("#btnCalcularCambio").click(function () {
