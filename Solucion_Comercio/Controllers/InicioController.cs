@@ -4,7 +4,7 @@ using Solucion_Comercio.Servicios.Contrato;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace Solucion_Comercio.Controllers
 {
@@ -37,6 +37,8 @@ namespace Solucion_Comercio.Controllers
             {
                 try
                 {
+                    TempData["UsuarioId"] = usuario_encontrado.IdUsuario;
+
                     if (usuario_encontrado.Password == clave && usuario_encontrado.EstadoUsuario == 1)
                     {
                         // Obtener el id del rol del usuario
@@ -99,11 +101,9 @@ namespace Solucion_Comercio.Controllers
                             return BadRequest($"Error sumar intento: {ex.Message}"); // Retornar un mensaje de error
                         }
                     }
-                       
-
                     if (usuario_encontrado.Intentos >= 3)
-                    {                       
-                        usuario_encontrado.EstadoUsuario = 2; 
+                    {
+                        usuario_encontrado.EstadoUsuario = 2;
                         _context.Update(usuario_encontrado);
                         await _context.SaveChangesAsync();
                         ViewData["Mensaje"] = "Contactar con el Administrador para desbloquear el usuario";
@@ -115,7 +115,6 @@ namespace Solucion_Comercio.Controllers
                     return BadRequest($"Error : {ex.Message}"); // Retornar un mensaje de error
                 }
             }
-
             else
             {
                 ViewData["Mensaje"] = "Usuario no encontrado o bloqueado";
@@ -123,52 +122,60 @@ namespace Solucion_Comercio.Controllers
             }
         }
 
-
-
-
-
-
-
-        //[HttpPost]
-        //public async Task<IActionResult> IniciarSeccion(string correo, string clave, int estado)
+        //public async Task<IActionResult> CerrarSeccion()
         //{
-        //    TbUsuario usurio_encontrado = await _usuarioServicio.GetUsuario(correo, clave);
+        //    await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-        //    if (usurio_encontrado == null)
-        //    {
-        //        ViewData["Mensaje"] = "No se encontraron coincidencias";
-        //        return View();
-        //    }
 
-        //    // Obtener el id del rol del usuario
-        //    int idRol = usurio_encontrado.RolUsuario;
-
-        //    List<Claim> claims = new List<Claim>(){
-        //    new Claim(ClaimTypes.Name, usurio_encontrado.NombreUsuario),
-        //    new Claim("rolUsuario", idRol.ToString()) // Agregar el id del rol como una nueva claim
-        //};
-
-        //    ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-        //    AuthenticationProperties properties = new AuthenticationProperties()
-        //    {
-        //        AllowRefresh = true
-        //    };
-
-        //    await HttpContext.SignInAsync(
-        //            CookieAuthenticationDefaults.AuthenticationScheme,
-        //            new ClaimsPrincipal(claimsIdentity),
-        //            properties);
-
-        //    return RedirectToAction("Index", "Home");
+        //    return RedirectToAction("IniciarSeccion", "Inicio");
+        //    //return View();
         //}
-
 
         public async Task<IActionResult> CerrarSeccion()
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("IniciarSeccion", "Inicio");
-            //return View();
+            if (TempData.ContainsKey("UsuarioId"))
+            {
+                int usuarioId = (int)TempData["UsuarioId"]; // Obtener el ID del usuario desde TempData
+
+                await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+                try
+                {
+                    // Obtener la última entrada en la tabla Bitacora para el usuario
+                    TbBitacora bitacora = await _context.TbBitacoras
+                        .Where(b => b.IdUsuario == usuarioId)
+                        .OrderByDescending(b => b.IdBitacora)
+                        .FirstOrDefaultAsync();
+
+                    if (bitacora != null)
+                    {
+                        bitacora.Salida = DateTime.Now; // Actualizar la fecha de salida
+                        _context.TbBitacoras.Update(bitacora);
+                        await _context.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        return NotFound(); // No se encontró una entrada en la Bitacora para el usuario
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest($"Error al actualizar la bitacora: {ex.Message}"); // Retornar un mensaje de error
+                }
+
+
+                TempData.Remove("UsuarioId"); // Eliminar el valor de TempData después de usarlo
+
+                return RedirectToAction("IniciarSeccion", "Inicio");
+            }
+            else
+            {
+                return BadRequest("No se pudo obtener el ID del usuario.");
+            }
         }
+
+
+
 
     }
 

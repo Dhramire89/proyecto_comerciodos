@@ -15,7 +15,7 @@ namespace Solucion_Comercio.Controllers
     {
         private readonly BdcomercioContext _context;
 
-        public TbUsuariosController(BdcomercioContext context)
+        public TbUsuariosController(BdcomercioContext context)  
         {
             _context = context;
         }
@@ -24,9 +24,7 @@ namespace Solucion_Comercio.Controllers
         public async Task<IActionResult> Index()
         {
             var bdcomercioContext = _context.TbUsuarios.Include(t => t.EstadoUsuarioNavigation).Include(t => t.RolUsuarioNavigation);
-            return View(await bdcomercioContext.ToListAsync());
-            //return View(await bdcomercioContext.ToListAsync());
-
+            return View(await bdcomercioContext.ToListAsync());           
         }
 
         // GET: TbUsuarios/Details/5

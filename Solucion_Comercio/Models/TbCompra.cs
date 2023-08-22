@@ -23,5 +23,6 @@ public partial class TbCompra
 [Display(Name = "Producto")]
     public virtual TbProducto IdProductoNavigation { get; set; } = null!;
 
+   
     public virtual ICollection<TbPendiente> TbPendientes { get; set; } = new List<TbPendiente>();
 }

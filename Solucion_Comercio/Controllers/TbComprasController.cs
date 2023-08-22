@@ -44,7 +44,7 @@ namespace Solucion_Comercio.Controllers
         // GET: TbCompras/Create
         public IActionResult Create()
         {
-            ViewData["IdProducto"] = new SelectList(_context.TbProductos, "IdProducto", "IdProducto");
+            ViewData["NombreProducto"] = new SelectList(_context.TbProductos, "IdProducto", "NombreProducto");
             return View();
         }
 
@@ -101,7 +101,11 @@ namespace Solucion_Comercio.Controllers
             }
 
             // Si el modelo no es válido o hubo un error, configurar el SelectList para IdProducto
-            ViewData["IdProducto"] = new SelectList(_context.TbProductos, "IdProducto", "NombreProducto", tbCompra.IdProducto);
+            //ViewData["IdProducto"] = new SelectList(_context.TbProductos, "IdProducto", "NombreProducto", tbCompra.IdProducto);
+            ViewBag.IdProducto = new SelectList(_context.TbProductos, "IdProducto", "NombreProducto");
+
+
+
             return View(tbCompra);
         }
 
