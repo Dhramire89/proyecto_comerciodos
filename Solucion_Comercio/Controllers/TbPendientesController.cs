@@ -50,7 +50,7 @@ namespace Solucion_Comercio.Controllers
         // GET: TbPendientes/Create
         public IActionResult Create()
         {
-            ViewData["IdCompra"] = new SelectList(_context.TbCompras, "IdCompra", "IdCompra");
+            //ViewData["IdCompra"] = new SelectList(_context.TbCompras, "IdCompra", "IdCompra");
             return View();
         }
 

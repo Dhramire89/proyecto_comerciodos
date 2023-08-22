@@ -49,53 +49,115 @@ namespace Solucion_Comercio.Controllers
         }
 
 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdCompra,NombreUsuario,FechaCompra,IdProducto,CantidadCompra")] TbCompra tbCompra)
         {
-            try
+            if (ModelState.IsValid==false)
             {
-                if (ModelState.IsValid == false)
+                try
                 {
                     // Agregar el registro de compra en la tabla TbCompras
                     _context.TbCompras.Add(tbCompra);
                     await _context.SaveChangesAsync();
+
+                    // Agregar un registro en la tabla TbPendientes con el valor de IdCompra
+
                     try
                     {
-                        // Agregar un registro en la tabla TbPendientes con el valor de IdCompra
-                        _context.TbPendientes.Add(new TbPendiente
-                        {
-                            IdCompra = tbCompra.IdCompra
-                        });
+                        // Obtener el último IdPendiente
+            int ultimoIdPendiente = await _context.TbPendientes
+                .OrderByDescending(p => p.IdPendiente)
+                .Select(p => p.IdPendiente)
+                .FirstOrDefaultAsync();
 
+            // Incrementar el último IdPendiente para obtener el nuevo valor
+            int nuevoIdPendiente = ultimoIdPendiente + 1;
+
+            // Agregar un registro en la tabla TbPendientes con el valor de IdCompra
+            TbPendiente nuevopendiente = new TbPendiente
+            {
+                IdPendiente = nuevoIdPendiente,
+                            IdCompra = tbCompra.IdCompra
+                        };
+                        _context.TbPendientes.Add(nuevopendiente);
                         await _context.SaveChangesAsync();
 
                         return RedirectToAction(nameof(Index));
                     }
-                    catch (Exception ex)
+                    catch (DbUpdateException ex)
                     {
-
-                        return BadRequest($"Error al crear pendiente: {ex.Message}"); // Retornar un mensaje de error
+                        var innerExceptionMessage = ex.InnerException != null ? ex.InnerException.Message : "No inner exception";
+                        return BadRequest($"Error al guardar los cambios: {innerExceptionMessage}");
                     }
+
+                    
                 }
-                else
+                catch (Exception ex)
                 {
-                    // Si el modelo no es válido, configurar el SelectList para IdProducto
-                    ViewData["IdProducto"] = new SelectList(_context.TbProductos, "IdProducto", "NombreProducto", tbCompra.IdProducto);
-                    return View(tbCompra);
+                    ModelState.AddModelError("", $"Error al crear la compra o pendiente: {ex.Message}");
                 }
             }
-            catch (Exception ex)
-            {
-                // Manejar la excepción adecuadamente (puedes registrarla, mostrar un mensaje de error, etc.)
-                ModelState.AddModelError("", $"Error al crear la compra: {ex.Message}");
 
-                // Configurar el SelectList para IdProducto nuevamente
-                ViewData["IdProducto"] = new SelectList(_context.TbProductos, "IdProducto", "NombreProducto", tbCompra.IdProducto);
-
-                return View(tbCompra);
-            }
+            // Si el modelo no es válido o hubo un error, configurar el SelectList para IdProducto
+            ViewData["IdProducto"] = new SelectList(_context.TbProductos, "IdProducto", "NombreProducto", tbCompra.IdProducto);
+            return View(tbCompra);
         }
+
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Create([Bind("IdCompra,NombreUsuario,FechaCompra,IdProducto,CantidadCompra")] TbCompra tbCompra)
+        //{
+        //    try
+        //    {
+        //        if (ModelState.IsValid == false)
+        //        {
+        //            // Agregar el registro de compra en la tabla TbCompras
+        //            _context.TbCompras.Add(tbCompra);
+        //            await _context.SaveChangesAsync();
+        //            try
+        //            {
+        //                // Agregar un registro en la tabla TbPendientes con el valor de IdCompra
+        //                var valor = 0;
+        //                TbPendiente nuevopendiente = new TbPendiente();
+
+
+        //                valor = tbCompra.IdCompra; 
+        //                nuevopendiente.IdCompra = valor;
+
+        //                _context.TbPendientes.Add(nuevopendiente);
+        //                await _context.SaveChangesAsync();
+
+
+
+        //                return RedirectToAction(nameof(Index));
+        //            }
+        //            catch (Exception ex)
+        //            {
+
+        //                return BadRequest($"Error al crear pendiente: {ex.Message}"); // Retornar un mensaje de error
+        //            }
+        //        }
+        //        else
+        //        {
+        //            // Si el modelo no es válido, configurar el SelectList para IdProducto
+        //            ViewData["IdProducto"] = new SelectList(_context.TbProductos, "IdProducto", "NombreProducto", tbCompra.IdProducto);
+        //            return View(tbCompra);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Manejar la excepción adecuadamente (puedes registrarla, mostrar un mensaje de error, etc.)
+        //        ModelState.AddModelError("", $"Error al crear la compra: {ex.Message}");
+
+        //        // Configurar el SelectList para IdProducto nuevamente
+        //        ViewData["IdProducto"] = new SelectList(_context.TbProductos, "IdProducto", "NombreProducto", tbCompra.IdProducto);
+
+        //        return View(tbCompra);
+        //    }
+        //}
 
 
         public async Task<IActionResult> Edit(int? id)

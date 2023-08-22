@@ -11,6 +11,7 @@ public partial class TbPendiente
 
     public int IdCompra { get; set; }
 
+
     [Display(Name = "Compra")]
     public virtual TbCompra IdCompraNavigation { get; set; } = null!;
 }
